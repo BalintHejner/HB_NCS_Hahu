@@ -1,13 +1,10 @@
 <script setup lang="ts">
 import { Ref, reactive, ref } from "vue";
-import YesOrNoComponent from "../components/YesOrNoComponent.vue";
-import YesOrNoComponentStore from "../components/YesOrNoComponentStore.vue";
 import { useStore } from "../stores/store";
 
 const store = useStore();
 
 const yn = store.app.yesNoComp;
-
 
 let nemReaktívVáltozó: number = 123;
 let reaktív1 = ref(123); // típusjelölés nélküli reaktív változó
@@ -191,7 +188,12 @@ function yesOrNoHandler(res: boolean): void {
 
       <div class="col-xs-12 col-md-6 q-pa-sm">
         <q-banner class="bg-secondary">
-          <YesOrNoComponent igen-felirat="Na-ná!" kérdés="Jedlikes vagy?" nemFelirat="Sajnos nem :-(" @btnPressed="yesOrNoHandler" />
+          <YesOrNoComponent
+            igen-felirat="Na-ná!"
+            kérdés="Jedlikes vagy?"
+            nemFelirat="Sajnos nem :-("
+            @btnPressed="yesOrNoHandler"
+          />
           Választott: {{ r.yesOrNoResult }}
         </q-banner>
       </div>
