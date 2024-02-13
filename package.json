@@ -1,0 +1,45 @@
+{
+  "name": "quasar-jedlik-helper",
+  "version": "0.0.1",
+  "description": "Start with Qusar in Jedlik",
+  "productName": "Quasar Jedlik Helper",
+  "author": "nitslaszlo <nitslaszlo@gmail.com>",
+  "private": true,
+  "scripts": {
+    "lint": "eslint --ext .js,.ts,.vue ./",
+    "format": "prettier --write \"**/*.{js,ts,vue,scss,html,md,json}\" --ignore-path .gitignore",
+    "test": "echo \"No test specified\" && exit 0",
+    "dev": "quasar dev",
+    "build": "quasar build",
+    "backend": "json-server --watch db.json --routes routes.json --delay 1000"
+  },
+  "dependencies": {
+    "@quasar/extras": "^1.16.9",
+    "axios": "^1.6.3",
+    "pinia": "^2.1.7",
+    "pinia-plugin-persist": "^1.0.0",
+    "quasar": "^2.14.2",
+    "vue": "^3.4.3",
+    "vue-i18n": "^9.8.0",
+    "vue-router": "^4.2.5"
+  },
+  "devDependencies": {
+    "@intlify/unplugin-vue-i18n": "^2.0.0",
+    "@quasar/app-vite": "^1.7.1",
+    "@types/node": "^20.10.6",
+    "@typescript-eslint/eslint-plugin": "^6.17.0",
+    "@typescript-eslint/parser": "^6.17.0",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-vue": "^9.19.2",
+    "json-server": "^0.17.4",
+    "prettier": "^3.1.1",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": "^18 || ^16 || ^14.19 || ^20",
+    "npm": ">= 6.13.4",
+    "yarn": ">= 1.21.1"
+  }
+}

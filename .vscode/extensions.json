@@ -1,0 +1,24 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "vue.vscode-typescript-vue-plugin",
+    "teledemic.branch-warnings",
+    "eamodio.gitlens",
+    "yzhang.markdown-all-in-one",
+    "codecoaching.quasar-docs",
+    "tomoki1207.pdf",
+    "formulahendry.auto-rename-tag",
+    "antfu.iconify",
+    "christian-kohler.npm-intellisense",
+    "vue.volar",
+    "lokalise.i18n-ally",
+    "anderseandersen.html-class-suggestions"
+  ],
+  "unwantedRecommendations": [
+    "octref.vetur",
+    "hookyqr.beautify",
+    "dbaeumer.jshint",
+    "ms-vscode.vscode-typescript-tslint-plugin"
+  ]
+}
