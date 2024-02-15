@@ -10,7 +10,7 @@ let showMenuBar = ref(true);
     <q-header v-model="showMenuBar" class="bg-blue-5 shadow-5 text-white">
       <q-toolbar>
         <q-toolbar-title style="font-size: 20px"> Dolgozat Minta </q-toolbar-title>
-        <q-tabs class="text-yellow-14 text-left text-weight-light">
+        <q-tabs class="text-white-14 text-left text-weight-light">
           <q-route-tab label="Home" name="home" no-caps to="/" />
           <q-route-tab label="Basic" name="basic" no-caps to="/basic" />
         </q-tabs>
@@ -23,6 +23,8 @@ let showMenuBar = ref(true);
       <router-view />
     </q-page-container>
   </q-layout>
+
+
 </template>
 
 <style lang="scss">
