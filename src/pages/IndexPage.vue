@@ -1,7 +1,11 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import CardComponent from "src/components/CardComponent.vue";
+</script>
 
 <template>
-  <q-page> </q-page>
+  <q-page>
+    <card-component />
+  </q-page>
 </template>
 
 <style lang="scss" scoped>

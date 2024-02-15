@@ -7,16 +7,17 @@ let showMenuBar = ref(true);
 <template>
   <q-layout>
     <!-- Fejléc -->
-    <q-header v-model="showMenuBar" class="bg-primary text-white">
+    <q-header v-model="showMenuBar" class="bg-blue-5 shadow-5 text-white">
       <q-toolbar>
-        <q-toolbar-title> Dolgozat Minta </q-toolbar-title>
-        <q-tabs>
-          <q-route-tab label="Home" name="home" no-caps to="/"  />
-          <q-route-tab label="Basic" name="basic" no-caps to="/basic"/>
+        <q-toolbar-title style="font-size: 20px"> Dolgozat Minta </q-toolbar-title>
+        <q-tabs class="text-yellow-14 text-left text-weight-light">
+          <q-route-tab label="Home" name="home" no-caps to="/" />
+          <q-route-tab label="Basic" name="basic" no-caps to="/basic" />
         </q-tabs>
       </q-toolbar>
     </q-header>
 
+    <q-card class="bg-amber-1">Sanyi</q-card>
     <!-- A router ide (router-view) tölti be az oldalt -->
     <q-page-container>
       <router-view />
