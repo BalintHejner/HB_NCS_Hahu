@@ -1,10 +1,6 @@
 <script setup lang="ts">
 //import { useStore } from "src/stores/store";
 import { useStore } from "src/stores/store";
-<<<<<<< HEAD
-
-=======
->>>>>>> 98b856acbfb38a64be3d45ffef9f169450bf60a4
 
 const store = useStore();
 
@@ -30,19 +26,12 @@ function filterUpdate() {
       </q-badge> -->
       <q-select
         v-model="store.one.document.categoryNameField"
-<<<<<<< HEAD
         clearable
         emit-value
         filled
         label="Kategória"
         option-label="nev"
         option-value="nev"
-=======
-        filled
-        label="Kategória"
-        option-label="nev"
-        option-value="_id"
->>>>>>> 98b856acbfb38a64be3d45ffef9f169450bf60a4
         :options="store.one.documents"
         @update:model-value="filterUpdate()"
       />
