@@ -1,40 +1,7 @@
 <script setup lang="ts">
 //import { useStore } from "src/stores/store";
 import { useStore } from "src/stores/store";
-import { ref } from "vue";
 
-let model = ref(null);
-
-let options = [
-  {
-    _id: 1,
-    nev: "Személyautó",
-  },
-  {
-    _id: 2,
-    nev: "Kishaszonjármű",
-  },
-  {
-    _id: 3,
-    nev: "Munkagép",
-  },
-  {
-    _id: 4,
-    nev: "Motorkerékpár",
-  },
-  {
-    _id: 5,
-    nev: "E-bike",
-  },
-  {
-    _id: 6,
-    nev: "Lakókocsi",
-  },
-  {
-    _id: 7,
-    nev: "Hajó",
-  },
-];
 
 const store = useStore();
 
@@ -59,12 +26,14 @@ function filterUpdate() {
         Model: "{{ model }}"
       </q-badge> -->
       <q-select
-        v-model="model"
+        v-model="store.one.document.categoryNameField"
+        clearable
+        emit-value
         filled
         label="Kategória"
         option-label="nev"
-        option-value="_id"
-        :options="options"
+        option-value="nev"
+        :options="store.one.documents"
         @update:model-value="filterUpdate()"
       />
     </div>
