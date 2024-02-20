@@ -2,7 +2,6 @@
 import CardComponent from "src/components/CardComponent.vue";
 import { onMounted } from "vue";
 import { useStore } from "../stores/store";
-import EditDialogComponent from "src/components/EditDialogComponent.vue";
 import CategoryComponent from "src/components/CategoryComponent.vue";
 const store = useStore();
 
@@ -16,7 +15,6 @@ onMounted(() => {
     <category-component style="margin: auto" />
     <card-component />
     <!-- <card-component v-for="card in store.many.documents" :key="card.id" :card="card" /> -->
-    <EditDialogComponent />
   </q-page>
 </template>
 

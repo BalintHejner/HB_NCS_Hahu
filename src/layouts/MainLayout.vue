@@ -12,7 +12,6 @@ let showMenuBar = ref(true);
         <q-toolbar-title style="font-size: 20px"> Dolgozat Minta </q-toolbar-title>
         <q-tabs id="tabs" class="text-white-14 text-left text-weight-light" style="color: yellow">
           <q-route-tab label="Home" name="home" no-caps to="/" />
-          <q-route-tab label="Basic" name="basic" no-caps to="/basic" />
         </q-tabs>
       </q-toolbar>
     </q-header>

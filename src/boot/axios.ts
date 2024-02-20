@@ -15,9 +15,9 @@ declare module "@vue/runtime-core" {
 // "export default () => {}" function below (which runs individually
 // for each client)
 
-// localhost:3000 -> JSON Server default port
+// localhost:5000 -> JSON Server default port
 // Run backend JSON Server: npm run backend
-const api = axios.create({ baseURL: "http://localhost:3000" });
+const api = axios.create({ baseURL: "http://localhost:5000" });
 
 export default boot(({ app }) => {
   // for use inside Vue files (Options API) through this.$axios and this.$api

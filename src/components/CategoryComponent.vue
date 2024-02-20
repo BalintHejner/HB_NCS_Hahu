@@ -65,7 +65,7 @@ function filterUpdate() {
         option-label="nev"
         option-value="_id"
         :options="options"
-        @change="filterUpdate()"
+        @update:model-value="filterUpdate()"
       />
     </div>
   </div>
