@@ -1,16 +1,12 @@
 <script setup lang="ts">
 import { useStore } from "src/stores/store";
-import { onMounted, ref } from "vue";
+import { ref } from "vue";
 const store = useStore();
 
 const cim = ref(store.many.document.titleField)
 const teljesLeiras = ref(false);
 const expanded = ref(false);
 const slide = ref(0);
-
-onMounted(() => {
-  store.many_GetAll();
-});
 
 function editDocument() {
   store.many.document.id = store.app.selectedMany[0].id;
