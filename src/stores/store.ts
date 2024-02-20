@@ -29,12 +29,17 @@ export interface IMany {
   id?: number; // PK
   categoryId?: number; // FK
   titleField?: string;
+  ageField?: number;
+  kmField?:number;
+  colorField?: string;
+  fuelField?: string;
+  ccField?: number;
+  PowerField?: number;
+  boolField?: boolean;
   descField?: string;
   dateField?: string;
-  boolField?: boolean;
   priceField?: number;
-  imgField?: string;
-  category?: IOne;
+  imgField?: string[];
 }
 
 export interface IOther {
@@ -150,7 +155,7 @@ export const useStore = defineStore({
         this.many.documents = [];
         // Loading.show();
         api
-          .get(`advertisements?_expand=category&q=${this.app.filter}`)
+          .get(`hirdetesek?_expand=kategoria&q=${this.app.filter}`)
           .then((res) => {
             // Loading.hide();
             if (res?.data) {
