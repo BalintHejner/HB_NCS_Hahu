@@ -3,39 +3,20 @@ import CardComponent from "src/components/CardComponent.vue";
 import { onMounted } from "vue";
 import { useStore } from "../stores/store";
 import EditDialogComponent from "src/components/EditDialogComponent.vue";
+import CategoryComponent from "src/components/CategoryComponent.vue";
 const store = useStore();
 
 onMounted(() => {
   store.many_GetAll();
-  store.app.showEditDialog = true;
-
 });
-
-function editDocument() {
-  store.many.document.id = store.app.selectedMany[0].id;
-  store.app.showEditDialog = true;
-}
 </script>
 
 <template>
   <q-page>
-    <div>
-      <q-banner>
-         wahhhh
-      </q-banner>
-      <card-component />
-    </div>
+    <category-component style="margin: auto" />
+    <card-component />
+    <!-- <card-component v-for="card in store.many.documents" :key="card.id" :card="card" /> -->
     <EditDialogComponent />
-
-    <div class="row justify-center q-mt-sm q-gutter-md">
-      <q-btn
-        v-show="store.app.selectedMany.length == 1"
-        color="red"
-        label="Hirdetés szerkesztése"
-        no-caps
-        @click="editDocument()"
-      />
-    </div>
   </q-page>
 </template>
 

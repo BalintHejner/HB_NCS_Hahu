@@ -10,7 +10,7 @@ function ShowDialog() {
 }
 
 function HideDialog() {
-    store.many.document = {};
+  store.many.document = {};
 }
 
 function Close() {
@@ -73,25 +73,22 @@ function Reset() {
           <q-input
             v-model="store.many.document.dateField"
             filled
-            label="Hirdetes datuma"
+            label="Hírdetés dátuma"
             :rules="[(v) => (v != null && v != '') || 'Kérem töltse ki a datumot!']"
             type="date"
           />
-          <q-checkbox 
-          v-model="store.many.document.boolField"
-          label="Serulesmentes"
-          />
+          <q-checkbox v-model="store.many.document.boolField" label="Sérülésmentes" />
           <q-input
             v-model="store.many.document.priceField"
             filled
-            label="Ar"
+            label="Ár"
             :rules="[(v) => (v != null && v != '') || 'Az ar nem lehet üres!']"
             type="number"
           />
           <q-input
             v-model="store.many.document.imgField"
             filled
-            label="Foto az elado jarmurol"
+            label="Fotó az eladó járműről"
             :rules="[(v) => (v != null && v != '') || 'Az ar nem lehet üres!']"
             type="text"
           />
