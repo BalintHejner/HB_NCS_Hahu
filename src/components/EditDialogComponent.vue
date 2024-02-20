@@ -45,13 +45,6 @@ function Reset() {
       <q-form @reset="Reset()" @submit="Submit()">
         <div class="q-gutter-md">
           <h5 class="text-center">Hirdetés szerkesztése</h5>
-          <q-input
-            v-model="store.many.document.titleField"
-            filled
-            label="Cím"
-            :rules="[(v) => (v != null && v != '') || 'A hirdetés címe nem lehet üres!']"
-            type="text"
-          />
           <q-select
             v-model="store.many.document.categoryId"
             clearable
@@ -64,11 +57,43 @@ function Reset() {
             :rules="[(v) => v != null || 'Kérem válasszon kategóriát!']"
           />
           <q-input
+            v-model="store.many.document.titleField"
+            filled
+            label="Cím"
+            :rules="[(v) => (v != null && v != '') || 'A hirdetés címe nem lehet üres!']"
+            type="text"
+          />
+          <q-input
             v-model="store.many.document.descField"
             filled
             label="Leírás"
             :rules="[(v) => (v != null && v != '') || 'Kérem töltse ki a leírást!']"
             type="textarea"
+          />
+          <q-input
+            v-model="store.many.document.dateField"
+            filled
+            label="Hirdetes datuma"
+            :rules="[(v) => (v != null && v != '') || 'Kérem töltse ki a datumot!']"
+            type="date"
+          />
+          <q-checkbox 
+          v-model="store.many.document.boolField"
+          label="Serulesmentes"
+          />
+          <q-input
+            v-model="store.many.document.priceField"
+            filled
+            label="Ar"
+            :rules="[(v) => (v != null && v != '') || 'Az ar nem lehet üres!']"
+            type="number"
+          />
+          <q-input
+            v-model="store.many.document.imgField"
+            filled
+            label="Foto az elado jarmurol"
+            :rules="[(v) => (v != null && v != '') || 'Az ar nem lehet üres!']"
+            type="text"
           />
           <div class="row justify-center q-gutter-lg">
             <q-btn color="green" label="Save" no-caps type="submit" />
