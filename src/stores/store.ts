@@ -12,12 +12,6 @@ export interface IApp {
   filter: string;
   selectedMany: Array<IMany>;
   selectedOne: Array<IOne>;
-  yesNoComp: {
-    kérdés: string;
-    pozitívGomb: string;
-    negatívGomb: string;
-    válasz?: boolean;
-  }
 }
 
 export interface IOne {
@@ -26,20 +20,22 @@ export interface IOne {
 }
 
 export interface IMany {
-  id?: number; // PK
-  categoryId?: number; // FK
-  titleField?: string;
-  ageField?: number;
-  kmField?:number;
-  colorField?: string;
-  fuelField?: string;
-  ccField?: number;
-  PowerField?: number;
-  boolField?: boolean;
-  descField?: string;
-  dateField?: string;
-  priceField?: number;
-  imgField?: string[];
+  _id?: number; // PK
+  kategoriaId?: number; // FK
+  cim?: string;
+  ev?: number;
+  km?: number;
+  szin?: string;
+  benzin?: string;
+  cc?: number;
+  teljesitmeny?: number;
+  serulesmentes?: boolean;
+  leiras?: string;
+  datum?: Date;
+  ar?: number;
+  kepek?: Array<string>;
+  kategoria?: IOne;
+  kw?: number;
 }
 
 export interface IOther {
@@ -89,12 +85,7 @@ export const useStore = defineStore({
       showNewDialog: false,
       filter: "",
       selectedMany: [],
-      selectedOne: [],
-      yesNoComp:{
-        kérdés: "Igen vagy nem?",
-        pozitívGomb: "Igen",
-        negatívGomb: "Nem"
-      }
+      selectedOne: []
     },
   }),
   getters: {},
@@ -103,11 +94,57 @@ export const useStore = defineStore({
       Loading.show();
       this.one.documents = [];
       api
-        .get("api/kategoriak")
+        .get("api/hirdetesek")
         .then((res) => {
           Loading.hide();
           if (res?.data) {
             this.one.documents = res.data;
+          }
+        })
+        .catch((error) => {
+          ShowErrorWithNotify(error);
+        });
+    },
+
+    // async one_getByCategory(): Promise<void> {
+    //   Loading.show();
+    //   api
+    //   .get(`api/kategoriak/${this.app.selectedCategory}/hirdetesek`).then((res) => {
+    //     Loading.hide();
+    //     if (res?.data) {
+    //       this.many.documents = res.data.map((r: any) => r.kategoria_hirdetesei).flat();
+    //       this.many.documents = this.many.documents.map((r: any) => ({
+    //         ...r,
+    //         aktKep: 0,
+    //         expandedLeiras: false,
+    //       }));
+    //     }
+    // } },
+    async other_GetAll(kategoriaNev): Promise<void> {
+      Loading.show();
+      this.other.documents = [];
+      api
+        .get(`api/kategoriak/${kategoriaNev}/hirdetesek`)
+        .then((res) => {
+          Loading.hide();
+          if (res?.data) {
+            this.other.documents = res.data[0].kategoria_hirdetesei;
+          }
+        })
+        .catch((error) => {
+          ShowErrorWithNotify(error);
+        });
+    },
+    // TODO fix this
+    async getAllCategories() {
+      Loading.show();
+      this.many.documents = [];
+      api
+        .get("api/kategoriak")
+        .then((res) => {
+          Loading.hide();
+          if (res?.data) {
+            this.many.documents = res.data;
           }
         })
         .catch((error) => {
@@ -132,13 +169,15 @@ export const useStore = defineStore({
     },
 
     async many_GetById(): Promise<void> {
-      if (this.many?.document?.id) {
+      if (this.many?.document?._id) {
         Loading.show();
         api
-          .get(`api/hirtedesek/${this.many.document.id}`)
+          .get(`api/hirdetesek/${this.many.document._id}`)
           .then((res) => {
             Loading.hide();
             if (res?.data) {
+              res.data.hirdetes_datum = res.data.hirdetes_datum.slice(0, 10);
+              console.log(res.data.hirdetes_datum);
               this.many.document = res.data;
               // store startig data to PATCH method:
               Object.assign(this.many.documentOld, this.many.document);
@@ -155,7 +194,7 @@ export const useStore = defineStore({
         this.many.documents = [];
         // Loading.show();
         api
-          .get(`hirdetesek?_expand=kategoria&q=${this.app.filter}`)
+          .get(`hirdetesek?_expand=category&q=${this.app.filter}`)
           .then((res) => {
             // Loading.hide();
             if (res?.data) {
@@ -169,7 +208,7 @@ export const useStore = defineStore({
     },
 
     async many_EditById(): Promise<void> {
-      if (this.many?.document?.id) {
+      if (this.many?.document?._id) {
         const diff: any = {};
         // the diff object only stores changed fields:
         Object.keys(this.many.document).forEach((k, i) => {
@@ -185,13 +224,13 @@ export const useStore = defineStore({
         } else {
           Loading.show();
           api
-            .patch(`api/advertisements/${this.many.document.id}`, diff)
+            .patch(`api/hirdetesek/${this.many.document._id}`, diff)
             .then((res) => {
               Loading.hide();
-              if (res?.data?.id) {
+              if (res?.data?._id) {
                 this.many_GetAll(); // refresh dataN with read all data again from backend
                 Notify.create({
-                  message: `Document with id=${res.data.id} has been edited successfully!`,
+                  message: `Document with id=${res.data._id} has been edited successfully!`,
                   color: "positive",
                 });
               }
@@ -204,15 +243,15 @@ export const useStore = defineStore({
     },
 
     async many_DeleteById(): Promise<void> {
-      if (this.many?.document?.id) {
+      if (this.many?.document?._id) {
         Loading.show();
         api
-          .delete(`api/advertisements/${this.many.document.id}`)
+          .delete(`api/hirdetesek/${this.many.document._id}`)
           .then(() => {
             Loading.hide();
             this.many_GetAll(); // refresh dataN with read all data again from backend
             Notify.create({
-              message: `Document with id=${this.many.document.id} has been deleted successfully!`,
+              message: `Document with id=${this.many.document._id} has been deleted successfully!`,
               color: "positive",
             });
           })
@@ -226,7 +265,7 @@ export const useStore = defineStore({
       if (this.many?.document) {
         Loading.show();
         api
-          .post("api/advertisements", this.many.document)
+          .post("api/hirdetesek", this.many.document)
           .then((res) => {
             Loading.hide();
             if (res?.data) {

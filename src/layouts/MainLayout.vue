@@ -1,23 +1,13 @@
-<script setup lang="ts">
-import { ref } from "vue";
-
-let showMenuBar = ref(true);
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <q-layout>
-    <!-- Fejléc -->
-    <q-header v-model="showMenuBar" class="bg-blue-5 shadow-5 text-white">
+  <q-layout view="hHh LpR fFf">
+    <q-header class="bg-blue-5 text-white" elevated>
       <q-toolbar>
-        <q-toolbar-title style="font-size: 20px"> Dolgozat Minta </q-toolbar-title>
-        <q-tabs id="tabs" class="text-white-14 text-left text-weight-light" style="color: yellow">
-          <q-route-tab label="Home" name="home" no-caps to="/" />
-        </q-tabs>
+        <q-toolbar-title shrink style="cursor: pointer" title> Dolgozat minta </q-toolbar-title>
+        <q-btn class="active" flat label="Home" no-caps to="/"> </q-btn>
       </q-toolbar>
     </q-header>
-
-    <q-card class="bg-amber-1">Sanyi</q-card>
-    <!-- A router ide (router-view) tölti be az oldalt -->
     <q-page-container>
       <router-view />
     </q-page-container>
@@ -26,11 +16,7 @@ let showMenuBar = ref(true);
 
 <style lang="scss">
 .active {
-  background-color: #dddddd;
-}
-
-#tabs {
-  position: absolute;
-  margin-left: 9rem;
+  background-color: #44a5f1;
+  color: #ff0;
 }
 </style>

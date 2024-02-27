@@ -2,7 +2,6 @@ import { boot } from "quasar/wrappers";
 import { createI18n } from "vue-i18n";
 // import messages from "@intlify/unplugin-vue-i18n/messages";
 
-import en from "../locales/en.json";
 import hu from "../locales/hu.json";
 
 // export type MessageLanguages = keyof typeof messages;
@@ -27,7 +26,6 @@ export default boot(({ app }) => {
   const i18n = createI18n({
     locale: "en",
     messages: {
-      en,
       hu,
     },
   });
