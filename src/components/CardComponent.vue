@@ -69,7 +69,7 @@ export default {
     <q-card-section class="text-h7" style="background-color: #ffe4c4">
       <ul>
         <li>
-          <span>color: </span><b>{{ color }}</b>
+          <span>Szín: </span><b>{{ color }}</b>
         </li>
         <li>
           <span>Évjárat: </span><b>{{ year }}</b>
