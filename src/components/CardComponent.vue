@@ -64,7 +64,7 @@ export default {
 <template>
   <q-card bordered class="q-ma-md" flat>
     <q-card-section class="text-center text-h5" style="background-color: #c8be9c">
-      {{ title }} - {{ price }}
+      {{ title }} - {{ price }} Ft
     </q-card-section>
     <q-card-section class="text-h7" style="background-color: #ffe4c4">
       <ul>
