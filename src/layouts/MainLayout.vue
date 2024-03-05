@@ -4,7 +4,7 @@
   <q-layout view="hHh LpR fFf">
     <q-header class="bg-blue-5 text-white" elevated>
       <q-toolbar>
-        <q-toolbar-title shrink style="cursor: pointer" title> Dolgozat minta </q-toolbar-title>
+        <q-toolbar-title shrink style="cursor: pointer; font-size: 28px" title> Dolgozat minta </q-toolbar-title>
         <q-btn class="active" flat label="Home" no-caps to="/"> </q-btn>
       </q-toolbar>
     </q-header>

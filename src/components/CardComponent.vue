@@ -9,10 +9,10 @@ export default {
     const title = ref(store.other.documents[props.index].cim);
     const description = ref(store.other.documents[props.index].leiras);
     const color = ref(store.other.documents[props.index].szin);
-    const price = ref(store.other.documents[props.index].ar);
-    const year = ref(store.other.documents[props.index].ev);
-    const cc = ref(store.other.documents[props.index].cc);
-    const date = ref(store.other.documents[props.index].datum);
+    const price = ref(store.other.documents[props.index].vetelar);
+    const year = ref(store.other.documents[props.index].evjarat);
+    const cc = ref(store.other.documents[props.index].hengerurtartalom);
+    const date = ref(store.other.documents[props.index].hirdetes_datum);
     const images = ref(store.other.documents[props.index].kepek);
     const sliced = ref("");
     const toggled = ref(false);
@@ -63,10 +63,10 @@ export default {
 
 <template>
   <q-card bordered class="q-ma-md" flat>
-    <q-card-section class="text-center text-h5" style="background-color: rgb(200, 190, 156)">
+    <q-card-section class="text-center text-h5" style="background-color: #c8be9c">
       {{ title }} - {{ price }}
     </q-card-section>
-    <q-card-section class="text-h7" style="background-color: rgb(255, 228, 196)">
+    <q-card-section class="text-h7" style="background-color: #ffe4c4">
       <ul>
         <li>
           <span>color: </span><b>{{ color }}</b>
@@ -82,18 +82,18 @@ export default {
         </li>
       </ul>
     </q-card-section>
-    <q-card-section class="" style="background-color: rgb(200, 190, 156)">
+    <q-card-section class="" style="background-color: #c8be9c">
       <div class="text-h7 text-justify">{{ toggled ? description : sliced }}</div>
       <hr />
       <q-toggle
         v-model="toggled"
         color="dark-blue"
         :disable="description.length <= 100"
-        label="Teljes hirdetés"
+        label="Teljes leirás"
         @update:model-value="handleToggle"
       />
     </q-card-section>
-    <q-card-section v-if="images.length == 1" style="background-color: rgb(255, 228, 196)">
+    <q-card-section v-if="images.length == 1" style="background-color: #ffe4c4">
       <div class="q-img q-img--menu" role="img" style="max-height: 200px">
         <div style="padding-bottom: 75%"></div>
         <div class="q-img__container absolute-full">
@@ -109,16 +109,16 @@ export default {
         </div>
       </div>
     </q-card-section>
-    <q-card-section v-if="images.length != 1" style="background-color: rgb(255, 228, 196)">
+    <q-card-section v-if="images.length != 1" style="background-color: #ffe4c4">
       <q-carousel v-model="slide" style="height: 200px" thumbnails>
         <q-carousel-slide v-for="(item, idx) in images" :key="idx" :img-src="images[idx]" :name="idx + 1" />
       </q-carousel>
     </q-card-section>
     <!-- TODO I hate bootstrap -->
-    <q-card-section style="background-color: rgb(200, 190, 156)">
+    <q-card-section style="background-color: #c8be9c">
       <div v-for="(item, id) in images" :key="id" class="text-h7 text-justify">{{ slide - 1 }} - {{ item }}</div>
     </q-card-section>
-    <q-card-actions class="justify-center" style="background-color: rgb(255, 228, 196)">
+    <q-card-actions class="justify-center" style="background-color: #ffe4c4">
       <q-btn
         class="bg-green-3"
         label="Hirdetés szerkesztése"

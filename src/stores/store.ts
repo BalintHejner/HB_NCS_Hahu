@@ -21,21 +21,21 @@ export interface IOne {
 
 export interface IMany {
   _id?: number; // PK
-  kategoriaId?: number; // FK
+  kategoria_id?: number; // FK
   cim?: string;
-  ev?: number;
-  km?: number;
+  evjarat?: number;
+  km_allas?: number;
   szin?: string;
-  benzin?: string;
-  cc?: number;
+  uzemanyag?: string;
+  hengerurtartalom?: number;
   teljesitmeny?: number;
   serulesmentes?: boolean;
   leiras?: string;
-  datum?: Date;
-  ar?: number;
+  hirdetes_datum?: Date;
+  vetelar?: number;
   kepek?: Array<string>;
-  kategoria?: IOne;
-  kw?: number;
+  hirdetes_kategoria?: IOne;
+  teljesitmeny_kw?: number;
 }
 
 export interface IOther {
@@ -85,7 +85,7 @@ export const useStore = defineStore({
       showNewDialog: false,
       filter: "",
       selectedMany: [],
-      selectedOne: []
+      selectedOne: [],
     },
   }),
   getters: {},
@@ -135,7 +135,6 @@ export const useStore = defineStore({
           ShowErrorWithNotify(error);
         });
     },
-    // TODO fix this
     async getAllCategories() {
       Loading.show();
       this.many.documents = [];
